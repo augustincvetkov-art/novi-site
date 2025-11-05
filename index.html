@@ -1,70 +1,186 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Novi — AI that works like your best employee</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Novi — AI Assistant for Local Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; color:#111; }
-    .wrap { max-width: 940px; margin: 0 auto; padding: 48px 20px; }
-    .pill { display:inline-block; padding:6px 12px; border:1px solid #ddd; border-radius:999px; font-size:14px; }
-    h1 { font-size: clamp(32px, 6vw, 56px); line-height:1.05; margin: 18px 0; }
-    p.lead { font-size: clamp(16px, 2.6vw, 20px); color:#333; }
-    .cta { display:flex; gap:12px; margin-top:22px; flex-wrap:wrap; }
-    .btn { padding:12px 18px; border-radius:10px; border:1px solid #111; background:#111; color:#fff; text-decoration:none; font-weight:600; }
-    .btn.secondary { background:#fff; color:#111; }
-    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:14px; margin-top:28px; }
-    .card { border:1px solid #eee; border-radius:14px; padding:16px; background:#fff; }
-    .muted { color:#666; font-size:14px; margin-top:20px; }
-    footer { border-top:1px solid #eee; margin-top:40px; padding-top:18px; color:#666; font-size:14px; }
+    :root{
+      --bg:#0b0f1a;
+      --bg2:#0a0c14;
+      --card:#0f1424cc;
+      --text:#e6eaf3;
+      --muted:#9aa3b2;
+      --accent:#7df9ff; /* cyber cyan */
+      --accent-2:#a78bfa; /* soft violet */
+      --ring: 0 0 0 1px #1f2a44 inset, 0 0 0 1px #22304d, 0 10px 30px #091126;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text); background: radial-gradient(1200px 800px at 10% -10%, #12204a 0%, transparent 60%),
+      radial-gradient(1000px 700px at 90% 0%, #2a1b55 0%, transparent 55%), var(--bg);
+      background-attachment: fixed;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px 80px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.2px}
+    .brand-badge{width:28px;height:28px;border-radius:8px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2)); box-shadow: 0 0 40px #7df9ff33}
+    .nav .cta{display:flex;gap:10px}
+    .btn{appearance:none;border:1px solid #2a3554;background:#121a2f;color:var(--text);
+      padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:600;transition:0.2s;display:inline-flex;align-items:center;gap:8px}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px #00000055}
+    .btn.primary{background:linear-gradient(135deg,var(--accent) 0%, var(--accent-2) 100%); color:#0a0c14; border:none}
+    .btn.ghost{background:transparent;border-color:#334268;color:#c7d2ff}
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:26px;align-items:center;margin-top:36px}
+    .h1{font-size: clamp(32px, 5vw, 56px); line-height:1.05; margin:0 0 12px; font-weight:800}
+    .lead{font-size: clamp(16px, 2.2vw, 20px); color:var(--muted); margin:0 0 18px}
+    .chip{display:inline-flex;gap:8px;align-items:center;font-size:13px;color:#b8c1d9;border:1px solid #2a3554;padding:6px 10px;border-radius:999px;background:#0f1424aa}
+    .glowcard{border:1px solid #22304d; background:linear-gradient(180deg,#0f1424cc,#0b0f1a99);
+      backdrop-filter: blur(6px); border-radius:18px; padding:18px; box-shadow: var(--ring)}
+      .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
+      .kicker{font-size:13px;color:#a9b4c9;text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px}
+      .section{margin-top:48px}
+      .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+      .step-num{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#0a0c14;font-weight:800;display:inline-grid;place-items:center;margin-bottom:8px}
+      .muted{color:var(--muted)}
+      .footer{border-top:1px solid #1c2542;margin-top:56px;padding-top:18px;color:#8f9abc;font-size:14px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+      @media (max-width:880px){.hero{grid-template-columns:1fr}}
+      /* tiny accent lines */
+      .accent-line{height:1px;background:linear-gradient(90deg,transparent, #7df9ff66 30%, #a78bfa66 70%, transparent);margin:14px 0}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <span class="pill">Novi</span>
-    <h1>Work smarter, serve faster, and never miss a lead — even after hours.</h1>
-    <p class="lead">An AI assistant that helps your team handle customers, book appointments, and close sales automatically — while your staff focuses on real work.</p>
-
-    <div class="cta">
-      <!-- Change the email to yours -->
-      <a class="btn" href="https://forms.gle/w6h2ZCjph4bSWwBW9" target="_blank">Get a Free Demo</a>
-      <!-- Or swap this link to a Google Form later -->
-      <a class="btn secondary" href="#how">See How It Works</a>
+    <!-- NAV -->
+    <div class="nav">
+      <div class="brand">
+        <div class="brand-badge"></div>
+        <div>Novi</div>
+      </div>
+      <div class="cta">
+        <a class="btn ghost" href="#how">How it works</a>
+        <!-- TODO: replace with your Google Form link -->
+        <a class="btn primary" href="https://forms.gle/YOUR_FORM_ID" target="_blank">Get a Free Demo</a>
+      </div>
     </div>
 
-    <div class="grid">
-      <div class="card"><b>Instant replies</b><br><span class="muted">Web, SMS, Instagram DMs</span></div>
-      <div class="card"><b>Bookings + reminders</b><br><span class="muted">Reduce no-shows with deposits</span></div>
-      <div class="card"><b>Learns fast</b><br><span class="muted">Under 15 minutes from your info</span></div>
-      <div class="card"><b>Staff booster</b><br><span class="muted">Your team shines; bot does repeats</span></div>
+    <!-- HERO -->
+    <div class="hero">
+      <div>
+        <span class="chip">AI assistant for local businesses</span>
+        <h1 class="h1">Work smarter. Serve faster. <span style="background:linear-gradient(135deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">Never miss a lead.</span></h1>
+        <p class="lead">Novi helps your team handle messages, book appointments, and follow up automatically — while your staff focuses on real customers. 24/7. Multi-channel. On brand.</p>
+        <div class="cta">
+          <a class="btn primary" href="https://forms.gle/YOUR_FORM_ID" target="_blank">Get a Free Demo</a>
+          <a class="btn" href="#features">See Features</a>
+        </div>
+        <div class="accent-line"></div>
+        <div class="grid">
+          <div class="glowcard"><b>Instant replies</b><br><span class="muted">Web chat · SMS · Instagram DMs</span></div>
+          <div class="glowcard"><b>Bookings + reminders</b><br><span class="muted">Reduce no-shows with deposits</span></div>
+          <div class="glowcard"><b>Learns fast</b><br><span class="muted">Onboard in ~15 minutes</span></div>
+          <div class="glowcard"><b>Staff booster</b><br><span class="muted">Bot handles repeats; people handle VIPs</span></div>
+        </div>
+      </div>
+
+      <!-- Right side mock “console” -->
+      <div class="glowcard">
+        <div class="kicker">Live preview</div>
+        <div style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:13px; color:#c9e6ff; background:#0a0f1f; border:1px solid #1e2a46; border-radius:12px; padding:14px; height:280px; overflow:auto">
+<pre style="margin:0;white-space:pre-wrap">> Customer: Can I book for 3pm today?
+> Novi: Yes — I can schedule you at 3:00 PM. Would you like to confirm?
+> Customer: Yes, and can I add a second service?
+> Novi: Done. A $20 deposit holds your spot. Pay link: sms.link/abc123
+
+> Owner: Any bookings after hours last night?
+> Novi: 7 inquiries · 3 bookings · $60 in deposits collected.
+</pre>
+        </div>
+        <p class="muted" style="margin-top:8px">Example conversation for illustration.</p>
+      </div>
     </div>
 
-    <h2 id="how" style="margin-top:36px;">How Novi helps</h2>
-    <p>We connect to your booking links and tools (Google, Calendly, Square, etc.), answer FAQs, handle reschedules/cancellations, and escalate to humans when needed.</p>
-
-    <h3 style="margin-top:28px;">FAQ</h3>
-    <div class="card">
-      <p><b>Will this replace my staff?</b><br>
-      No — it makes them look like superheroes. Novi handles repetitive tasks 24/7 so your people can focus on customers in front of them.</p>
-      <p><b>How fast is setup?</b><br>Same day once we have your hours, services, and policies.</p>
-      <p><b>Can it match my brand voice?</b><br>Yes. We tune tone and responses to sound like you.</p>
+    <!-- FEATURES -->
+    <div id="features" class="section">
+      <div class="kicker">Capabilities</div>
+      <h2 style="margin:6px 0 10px">Everything your front desk does — automatically</h2>
+      <div class="grid">
+        <div class="glowcard">
+          <b>Omnichannel responses</b>
+          <p class="muted">Web, SMS, Instagram — instant, consistent, on brand.</p>
+        </div>
+        <div class="glowcard">
+          <b>Smart scheduling</b>
+          <p class="muted">Books, reschedules, and sends reminders that cut no-shows.</p>
+        </div>
+        <div class="glowcard">
+          <b>Payments & deposits</b>
+          <p class="muted">Collect small deposits to protect your calendar and time.</p>
+        </div>
+        <div class="glowcard">
+          <b>Trained on your business</b>
+          <p class="muted">Upload services, policies, and hours — Novi learns in minutes.</p>
+        </div>
+      </div>
     </div>
 
-    <p class="muted">Custom setup and monthly plans based on business size. Public pricing unlocks after our first 3 clients.</p>
+    <!-- HOW IT WORKS -->
+    <div id="how" class="section">
+      <div class="kicker">How it works</div>
+      <h2 style="margin:6px 0 10px">From demo to live in three steps</h2>
+      <div class="steps">
+        <div class="glowcard">
+          <div class="step-num">1</div>
+          <b>Discovery</b>
+          <p class="muted">Share your goals, tools, and booking links so we can tailor the demo.</p>
+        </div>
+        <div class="glowcard">
+          <div class="step-num">2</div>
+          <b>Setup</b>
+          <p class="muted">We load services, FAQs, and policies. You review tone and responses.</p>
+        </div>
+        <div class="glowcard">
+          <div class="step-num">3</div>
+          <b>Go live</b>
+          <p class="muted">Enable web/SMS/IG. Start capturing after-hours leads immediately.</p>
+        </div>
+      </div>
+    </div>
 
-    <section style="margin-top:60px; text-align:center;">
-  <h3 style="font-size:22px; margin-bottom:12px;">Why businesses choose Novi</h3>
-  <p style="max-width:640px; margin:0 auto; color:#444; font-size:16px;">
-    Novi helps small and local businesses save hours each week by handling messages,
-    booking customers automatically, and freeing up staff time. 
-    We're trusted by salons, restaurants, and fitness studios across NYC for fast, reliable AI support.
-  </p>
-  <p style="margin-top:18px; color:#666; font-size:14px;">
-    Submit your demo request to see how Novi can grow your business.
-  </p>
-</section>
- 
-    <footer>Made in NYC · Cancel anytime</footer>
+    <!-- TRUST / REASSURANCE -->
+    <div class="section">
+      <div class="kicker">Why Novi</div>
+      <h2 style="margin:6px 0 10px">Built to amplify your staff — not replace them</h2>
+      <div class="grid">
+        <div class="glowcard"><b>Human handoff</b><br><span class="muted">Routes complex cases to your team instantly.</span></div>
+        <div class="glowcard"><b>Brand-safe</b><br><span class="muted">We tune tone so it sounds like you — not a robot.</span></div>
+        <div class="glowcard"><b>Privacy-first</b><br><span class="muted">Your data stays secure with role-based access.</span></div>
+        <div class="glowcard"><b>Simple pricing</b><br><span class="muted">Custom plans now; public pricing after first 3 clients.</span></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section glowcard" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+      <div>
+        <div class="kicker">Get started</div>
+        <h3 style="margin:6px 0 8px">See a live demo tailored to your business</h3>
+        <p class="muted" style="margin:0">We’ll reach out within 24 hours. No pressure, no hard sell.</p>
+      </div>
+      <a class="btn primary" href="https://forms.gle/YOUR_FORM_ID" target="_blank">Request Demo</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div>© <span id="y"></span> Novi · Made in NYC</div>
+      <div class="muted">Questions? <a href="mailto:youremail@example.com" style="color:#c7d2ff;text-decoration:none">youremail@example.com</a></div>
+    </div>
   </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
