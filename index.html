@@ -67,7 +67,43 @@
   height: 36px;
   width: auto;
   border-radius: 8px;
+  display: block; 
+      .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 6px;
+  position: relative;
+}
+
+/* left icon */
+.brand-logo {
+  height: 60px;
+  width: auto;
+  border-radius: 10px;
   display: block;
+}
+
+/* center wordmark */
+.brand-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.wordmark-logo {
+  height: 48px;           /* change to 56px if you want it bigger */
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 12px rgba(56,183,242,0.35));
+}
+
+/* right buttons stay normal */
+@media (max-width:880px){
+  .brand-logo{height:46px;}
+  .wordmark-logo{height:38px;}
+}
+
 }
 
   </style>
@@ -75,15 +111,22 @@
 <body>
   <div class="wrap">
     <!-- NAV -->
-    <div class="nav">
-     <img src="novi-logo.png" alt="Novi" class="brand-logo">
-      <img src="novi-logo.png" alt="Novi" class="brand-logo">
-      <div class="cta">
-        <a class="btn ghost" href="#how">How it works</a>
-        <!-- TODO: replace with your Google Form link -->
-        <a class="btn primary" href="https://forms.gle/XWBQSxg1oiiCuEEbA" target="_blank">Get a Free Demo</a>
-      </div>
-    </div>
+    <div class="brand">
+  <!-- left: small square icon -->
+  <img src="novi-logo.png" alt="Novi icon" class="brand-logo">
+</div>
+
+<!-- center: wordmark -->
+<div class="brand-center">
+  <img src="noviwordmark.png" alt="Novi" class="wordmark-logo">
+</div>
+
+<!-- right: buttons -->
+<div class="cta">
+  <a class="btn ghost" href="#how">How it works</a>
+  <a class="btn primary" href="https://forms.gle/YOUR_FORM_ID" target="_blank">Get a Free Demo</a>
+</div>
+
 
     <!-- HERO -->
     <div class="hero">
