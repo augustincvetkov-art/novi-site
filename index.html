@@ -9,16 +9,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0f1a;
-      --bg2:#0a0c14;
-      --card:#0f1424cc;
-      --text:#e6eaf3;
-      --muted:#9aa3b2;
-      --accent:#7df9ff; /* cyber cyan */
-      --accent-2:#a78bfa; /* soft violet */
-      --ring: 0 0 0 1px #1f2a44 inset, 0 0 0 1px #22304d, 0 10px 30px #091126;
-    }
+   :root{
+  /* your palette */
+  --blue-1:#38b7f2;
+  --blue-2:#68c8f5;
+  --blue-3:#0fa3e8;
+  --gray-900:#111111;
+  --gray-800:#2a2a2a;
+  --black:#000000;
+
+  /* site tokens using your colors */
+  --bg: radial-gradient(1200px 800px at 10% -10%, #151515 0%, transparent 60%),
+        radial-gradient(1000px 700px at 90% 0%, #1a1a1a 0%, transparent 55%),
+        var(--black);
+  --card:#131313cc;
+  --text:#e9eef5;
+  --muted:#a2a8b5;
+  --accent: var(--blue-1);
+  --accent-2: var(--blue-2);
+}
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
