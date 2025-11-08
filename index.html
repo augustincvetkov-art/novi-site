@@ -68,42 +68,29 @@
   width: auto;
   border-radius: 8px;
   display: block; 
-      .nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-top: 6px;
-  position: relative;
+     /* NAV layout */
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding-top:6px; position:relative;
 }
 
 /* left icon */
-.brand-logo {
-  height: 60px;
-  width: auto;
-  border-radius: 10px;
-  display: block;
-}
+.brand-logo{ height:60px; width:auto; border-radius:10px; display:block }
 
 /* center wordmark */
-.brand-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+.brand-center{
+  position:absolute; left:50%; transform:translateX(-50%);
+  top:50%; translate:0 -50%; /* vertically centers within nav */
+  pointer-events:none; /* clicks go to buttons, not the image */
 }
-.wordmark-logo {
-  height: 48px;           /* change to 56px if you want it bigger */
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 0 12px rgba(56,183,242,0.35));
+.wordmark-logo{ height:48px; width:auto; display:block;
+  filter: drop-shadow(0 0 12px rgba(56,183,242,.35));
 }
 
-/* right buttons stay normal */
+/* responsive sizes */
 @media (max-width:880px){
-  .brand-logo{height:46px;}
-  .wordmark-logo{height:38px;}
-}
-
+  .brand-logo{height:46px}
+  .wordmark-logo{height:38px}
 }
 
   </style>
@@ -116,9 +103,9 @@
   <img src="novi-logo.png" alt="Novi icon" class="brand-logo">
 </div>
 
-<!-- center: wordmark -->
+<!-- center: wide NOVI wordmark -->
 <div class="brand-center">
-  <img src="noviwordmark.png" alt="Novi" class="wordmark-logo">
+  <img src="novi-wordmark.png" alt="Novi" class="wordmark-logo">
 </div>
 
 <!-- right: buttons -->
